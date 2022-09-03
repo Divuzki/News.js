@@ -15,6 +15,14 @@ html {
   scroll-behavior: smooth;
 }
 
+.triangle {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 20px 20px 0;
+  border-color: transparent #1a202c transparent transparent;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
