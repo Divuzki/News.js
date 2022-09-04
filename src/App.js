@@ -2,6 +2,7 @@ import alanBtn from "@alan-ai/alan-sdk-web";
 import wordsToNumbers from "words-to-numbers";
 import React from "react";
 import Card from "./Card";
+import { ReactComponent as GithubIcon } from "./svgs/github.svgr.svg";
 import {
   m,
   LazyMotion,
@@ -88,6 +89,18 @@ function App() {
   return (
     <AnimatePresence exitBeforeEnter>
       <LazyMotion features={loadFeatures}>
+        <a
+          href="https://github.com/Divuzki/News.js?utm_source=news-js.hop.sh&utm_medium=visit&utm_campaign=hackathon-projects"
+          target={"_blank"}
+          rel="noreferrer"
+          className="fixed group rounded-xl transition-all py-2 px-4
+         hover:bg-slate-600 flex gap-2 items-center bottom-5 left-4"
+        >
+          <GithubIcon className="group-hover:fill-white" />
+          <span className="text-slate-600 group-hover:text-white transition-all text-xl font-bold">
+            Github repo
+          </span>
+        </a>
         <div className="flex flex-col select-none justify-center max-w-6xl min-h-screen px-4 py-10 mx-auto sm:px-6">
           {newsArticles.length > 0 ? (
             <React.Fragment>
