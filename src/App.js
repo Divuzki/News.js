@@ -17,7 +17,6 @@ import InfoCard from "./InfoCard";
 function App() {
   const [activeArticle, setActiveArticle] = React.useState(0);
   const [newsArticles, setNewsArticles] = React.useState([]);
-  const [isOpen, setIsOpen] = React.useState(false);
   const [head, setHead] = React.useState("");
 
   const { scrollYProgress } = useScroll();
@@ -36,8 +35,6 @@ function App() {
           setActiveArticle(-1);
           console.log(title);
           setHead(title);
-        } else if (command === "instructions") {
-          setIsOpen(true);
         } else if (command === "highlight") {
           setActiveArticle((prevActiveArticle) => prevActiveArticle + 1);
         } else if (command === "open") {

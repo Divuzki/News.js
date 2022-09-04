@@ -2,12 +2,12 @@ import React from "react";
 import { m } from "framer-motion";
 
 const Card = ({ post, i, activeArticle, isShow }) => {
-  const ref = React.createRef();
+  const ref = React.useRef(null);
 
   React.useEffect(() => {
     if (isShow && ref && ref.current) {
       // window.scrollTo(0, ref.current.offsetTop - 100);
-      window.scrollTo(0, ref.current.offsetTop - ref.current.offsetHeight);
+      window.scroll(0, ref.current.offsetTop - 50);
     }
   }, [isShow, ref]);
 
