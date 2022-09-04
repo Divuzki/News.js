@@ -110,7 +110,10 @@ function App() {
               />
               <div className="flex flex-wrap items-center justify-between mb-8">
                 <h2 className="mr-10 text-4xl font-bold leading-none md:text-5xl">
-                  {head} <b className="opacity-70 text-gray-300">⟶ say "take me back" to go back</b>
+                  <b className="capitalize">{head}</b>{" "}
+                  <b className="cursor-pointer opacity-70 transition-all text-gray-300 hover:text-slate-400">
+                    ⟶ say "take me back" to go back
+                  </b>
                 </h2>
               </div>
               <div className="flex flex-col flex-wrap">

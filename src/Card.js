@@ -32,7 +32,7 @@ const Card = ({ post, i, isShow }) => {
         ></m.div>
         <m.div
           className={`flex flex-col justify-between px-4 py-6 bg-white border  ${
-            isShow ? "border-2 border-gray-400" : "border-gray-400"
+            isShow ? "border-[3px] border-gray-400" : "border-gray-400"
           }`}
         >
           <m.div className="flex flex-col">
