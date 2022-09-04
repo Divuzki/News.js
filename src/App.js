@@ -10,43 +10,14 @@ import {
   useScroll,
   AnimateSharedLayout,
 } from "framer-motion";
-import Messages, { channelId } from "./RealTimeMsg";
+import { channelId } from "./Message";
 import { hopServer } from ".";
+import InfoCard from "./InfoCard";
 
 function App() {
   const [activeArticle, setActiveArticle] = React.useState(0);
   const [newsArticles, setNewsArticles] = React.useState([]);
   const [isOpen, setIsOpen] = React.useState(false);
-  const tabs = React.useMemo(() => {
-    return [
-      {
-        label: "What Alan can do",
-        content: (
-          <div>
-            <h1 className="capitalize font-semibold text-center animate-pulse text-xl">
-              Try saying...
-            </h1>
-            <p className="flex justify-center gap-2 hover:animate-pulse">
-              " Show me the latest <b>News</b>"
-            </p>
-            <p className="flex justify-center gap-2 hover:animate-pulse">
-              " Give me news from <b>Fox News</b>"
-            </p>
-            <p className="flex justify-center gap-2 hover:animate-pulse">
-              " How's the <b>Weather</b> here "
-            </p>
-            <p className="flex justify-center gap-2 hover:animate-pulse">
-              " How much is <b>Bitcoin</b> now "
-            </p>
-          </div>
-        ),
-      },
-      {
-        label: "What People ask Alan now",
-      },
-    ];
-  }, []);
-  const [selectedTab, setSelectedTab] = React.useState(tabs[0]);
 
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
@@ -88,22 +59,30 @@ function App() {
             hopServer.channels.publishMessage(
               channelId,
               // event name of your choosing
-              "NEW_MESSAGE",
+              "NEW_USER_MESSAGE",
               // event data, this can be any object you want it to be
               {
-                msg: e.text,
+                msg: {name: e.text, time: `${new Date("m:s")}`},
               }
             );
             break;
           case "text":
-            console.info("Alan reponse:", e.text);
+            hopServer.channels.publishMessage(
+              channelId,
+              // event name of your choosing
+              "NEW_ALAN_MESSAGE",
+              // event data, this can be any object you want it to be
+              {
+                res: {name: e.text, time: `${new Date("m:s")}` },
+              }
+            );
             break;
           default:
-            console.info("Unknown event");
+            console.info("Alan event:", e);
         }
       },
     });
-  }, [tabs]);
+  }, []);
   const loadFeatures = () => import("./features.js").then((res) => res.default);
   return (
     <AnimatePresence exitBeforeEnter>
@@ -139,38 +118,7 @@ function App() {
               {/* {activeArticle > 0 } */}
             </React.Fragment>
           ) : (
-            <div className="flex flex-col md:w-[30rem] m-auto gap-8 justify-center w-full h-full">
-              <m.h2 className="w-full text-4xl font-bold leading-none md:text-5xl">
-                Welcome to News.js
-              </m.h2>
-              <nav>
-                <ul>
-                  {tabs.map((item) => (
-                    <li
-                      key={item.label}
-                      className={item === selectedTab ? "selected" : ""}
-                      onClick={() => setSelectedTab(item)}
-                    >
-                      {`${item.label}`}
-                      {item === selectedTab ? (
-                        <m.div className="underline" layoutId="underline" />
-                      ) : null}
-                    </li>
-                  ))}
-                </ul>
-              </nav>
-              <main>
-                <m.div
-                  key={selectedTab ? selectedTab.label : "empty"}
-                  initial={{ y: 10, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  exit={{ y: -10, opacity: 0 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  {selectedTab ? selectedTab.content : <Messages />}
-                </m.div>
-              </main>
-            </div>
+            <InfoCard />
           )}
         </div>
       </LazyMotion>

@@ -10,6 +10,11 @@ const myToken = 'ptk_c19iOTA0MDIyODEyOGJlM2NiMWZjZWVlMTUwY2Q2MjQ1MV81MDczNDg0NTk
 // Export the Hop SDK instance so you can use it throughout your codebase
 export const hopServer = new Hop(myToken);
 
+// Example: Creating a project secret
+hopServer.projects.secrets.create(
+	'RANDOM_NUMBER',
+	Math.floor(Math.random() * 100).toString(),
+);
 hop.init({
 	projectId: "project_NTAyODgyMjAwMTY4OTQyNDI" // replace with your project ID
 });
