@@ -74,10 +74,12 @@ export default function Messages() {
   });
 
   return (
-    <div
+    <>
+      <span className="text-[10px] font-semibold opacity-80 w-full flex mb-4 justify-center text-center">- Note that nothing here is being saved -</span>
+      <div
       className="flex-1 overflow-y-auto overflow-x-hidden w-full rounded-lg max-w-[30rem] max-h-[30rem] shadow-md scrollbar-thin"
       style={{ backgroundColor: "#DAD3CC" }}
-    >
+    > 
       {!chatMessages.length && (
         <h3 className="text-center text-2xl font-bold py-2 px-4">
           No messages yet, be the first to ask
@@ -87,5 +89,7 @@ export default function Messages() {
         <SingleMessage key={index} message={message} />
       ))}
     </div>
+    </>
+    
   );
 }
