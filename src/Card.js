@@ -1,23 +1,43 @@
 import React from "react";
 import { m } from "framer-motion";
 
-const Card = ({ post, i, isShow }) => {
+const Card = ({ post, i, activeArticle, isShow }) => {
+  const ref = React.createRef();
+
+  React.useEffect(() => {
+    if (isShow && ref && ref.current) {
+      // window.scrollTo(0, ref.current.offsetTop - 100);
+      window.scrollTo(0, ref.current.offsetTop - ref.current.offsetHeight);
+    }
+  }, [isShow, ref]);
+
   return (
     <m.div
+      ref={ref}
       layoutId={i}
       className="w-full max-w-full mb-8 sm:w-1/2 px-4 lg:w-1/3 flex flex-col group"
     >
       <m.img
         src={post.urlToImage}
         alt="Card img"
-        className="object-cover object-center group-hover:scale-105 group-hover:rounded-lg group-hover:shadow-sm transition-all w-full h-48"
+        className={`
+        object-cover object-center group-hover:scale-105
+         ${isShow ? "rounded-lg scale-105" : ""} group-hover:rounded-lg
+         group-hover:shadow-sm transition-all w-full h-48`}
       />
       <m.div className="flex transition-all flex-grow">
-        <m.div className="triangle transition-all group-hover:-translate-y-2 z-[-1]"></m.div>
-        <m.div className={`flex flex-col justify-between px-4 py-6 bg-white border  ${isShow ? "border-4 border-gray-400": "border-gray-400"}`}>
+        <m.div
+          className={`triangle transition-all ${isShow ? "-translate-y-2" : ""} 
+        group-hover:-translate-y-2 z-[-1]`}
+        ></m.div>
+        <m.div
+          className={`flex flex-col justify-between px-4 py-6 bg-white border  ${
+            isShow ? "border-4 border-gray-400" : "border-gray-400"
+          }`}
+        >
           <m.div className="flex flex-col">
             <m.span className="text-sm w-max font-medium text-gray-500 opacity-70">
-              {(new Date(post.publishedAt)).toDateString()}
+              {new Date(post.publishedAt).toDateString()}
             </m.span>
             <m.a
               href={post.url}

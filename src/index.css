@@ -1,4 +1,6 @@
-#root, html, body {
+#root,
+html,
+body {
   height: 100vh;
 }
 
@@ -23,18 +25,6 @@ html {
   border-color: transparent #1a202c transparent transparent;
 }
 
-
-
-nav {
-  background: #fdfdfd;
-  padding: 5px 5px 0;
-  border-radius: 24px;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-  border-bottom: 1px solid #eeeeee;
-  height: 44px;
-}
-
 .tabs {
   flex-grow: 1;
   display: flex;
@@ -51,7 +41,7 @@ main {
   flex-grow: 1;
   user-select: none;
 }
-main p{
+main p {
   opacity: 0.8;
 }
 main p:hover {
@@ -143,7 +133,6 @@ li button {
   cursor: default;
   pointer-events: none;
 }
-
 
 @tailwind base;
 @tailwind components;

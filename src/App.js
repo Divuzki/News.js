@@ -1,6 +1,6 @@
 import alanBtn from "@alan-ai/alan-sdk-web";
 import wordsToNumbers from "words-to-numbers";
-import React from "react";
+import React, { useEffect } from "react";
 import Card from "./Card";
 import {
   m,
@@ -18,6 +18,7 @@ function App() {
   const [activeArticle, setActiveArticle] = React.useState(0);
   const [newsArticles, setNewsArticles] = React.useState([]);
   const [isOpen, setIsOpen] = React.useState(false);
+  const [head, setHead] = React.useState("");
 
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
@@ -28,11 +29,13 @@ function App() {
   React.useEffect(() => {
     alanBtn({
       key: "744e855d6be3bc993b046d807b25a5402e956eca572e1d8b807a3e2338fdd0dc/stage",
-      onCommand: ({ command, articles, correntId, number }) => {
+      onCommand: ({ command, articles, title, number }) => {
         if (command === "newHeadlines") {
           setNewsArticles(articles);
-          console.log(articles)
-          setActiveArticle(correntId);
+          console.log(articles);
+          setActiveArticle(-1);
+          console.log(title);
+          setHead(title);
         } else if (command === "instructions") {
           setIsOpen(true);
         } else if (command === "highlight") {
@@ -63,7 +66,7 @@ function App() {
               "NEW_USER_MESSAGE",
               // event data, this can be any object you want it to be
               {
-                msg: {name: e.text, time: `${new Date("m:s")}`},
+                msg: { name: e.text, time: `${new Date().toDateString()}` },
               }
             );
             break;
@@ -74,7 +77,7 @@ function App() {
               "NEW_ALAN_MESSAGE",
               // event data, this can be any object you want it to be
               {
-                res: {name: e.text, time: `${new Date("m:s")}` },
+                res: { name: e.text, time: `${new Date().toDateString()}` },
               }
             );
             break;
@@ -88,7 +91,7 @@ function App() {
   return (
     <AnimatePresence exitBeforeEnter>
       <LazyMotion features={loadFeatures}>
-        <div className="flex flex-col justify-center max-w-6xl min-h-screen px-4 py-10 mx-auto sm:px-6">
+        <div className="flex flex-col select-none justify-center max-w-6xl min-h-screen px-4 py-10 mx-auto sm:px-6">
           {newsArticles.length > 0 ? (
             <React.Fragment>
               <m.div
@@ -97,9 +100,7 @@ function App() {
               />
               <div className="flex flex-wrap items-center justify-between mb-8">
                 <h2 className="mr-10 text-4xl font-bold leading-none md:text-5xl">
-                  {newsArticles.length > 0
-                    ? newsArticles[0].author
-                    : "Welcome to News.js"}
+                  {head}
                 </h2>
               </div>
               <div className="flex flex-col flex-wrap">
@@ -109,6 +110,7 @@ function App() {
                       <Card
                         key={idx}
                         post={post}
+                        activeArticle={parseInt(activeArticle)}
                         i={idx}
                         isShow={parseInt(activeArticle) === idx}
                       />
