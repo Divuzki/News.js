@@ -31,6 +31,7 @@ function App() {
       onCommand: ({ command, articles, correntId, number }) => {
         if (command === "newHeadlines") {
           setNewsArticles(articles);
+          console.log(articles)
           setActiveArticle(correntId);
         } else if (command === "instructions") {
           setIsOpen(true);

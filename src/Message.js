@@ -25,14 +25,18 @@ export default function Messages() {
 
   return (
     <div
-      className="flex-1 overflow-auto w-full rounded-lg max-w-[30rem] shadow-md"
+      className="flex-1 overflow-auto w-full rounded-lg max-w-[30rem] max-h-[30rem] shadow-md scrollbar-thin"
       style={{ backgroundColor: "#DAD3CC" }}
     >
 		  {!chatMessages.length && (
-			  <h3 className="text-center text-2xl font-bold">No messages yet</h3>
+			  <h3 className="text-center text-2xl font-bold py-2 px-4">No messages yet, be the first to ask</h3>
 		)}
         {chatMessages.map((message, index) => (
-          <div key={index} className="py-2 px-3 select-text">
+			<m.div
+				initial={{ opacity: 0, scale: 0.5 }}
+				animate={{ opacity: 1, scale: 1 }}
+				exit={{ opacity: 0, scale: 0.5 }}
+				key={index} className="py-2 px-3 select-text">
             {message.msg && (
               <m.div initial="hidden" animate="show" exit="hidden" variants={variants} className="flex justify-end mb-2">
                 <div
@@ -60,7 +64,7 @@ export default function Messages() {
                 </div>
               </m.div>
             )}
-          </div>
+          </m.div>
         ))}
     </div>
   );

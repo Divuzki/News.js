@@ -13,10 +13,17 @@ const InfoCard = () => {
             Try saying...
           </h1>
           <p className="flex justify-center gap-2 hover:animate-pulse">
-            " Show me the latest <b>News</b>"
+            " Show me the <b>latest News</b>"
           </p>
-          <p className="flex justify-center gap-2 hover:animate-pulse">
-            " Give me news from <b>Fox News</b>"
+          <p className="flex justify-center items-center gap-2 hover:animate-pulse">
+            " Show me news from
+            <div
+              className="flex gap-1 py-[2px] px-[8px] 
+            rounded-lg bg-blue-300 shadow-md"
+            >
+              <b>Fox News</b>-<span className="opacity-50">By Publisters</span>
+            </div>
+            "
           </p>
           <p className="flex justify-center gap-2 hover:animate-pulse">
             " How's the <b>Weather</b> here "
@@ -43,7 +50,9 @@ const InfoCard = () => {
           {tabs.map((item) => (
             <li
               key={item.label}
-              className={`${item === selectedTab ? "selected" : ""} p-2 rounded-lg cursor-pointer w-max text-center`}
+              className={`${
+                item === selectedTab ? "selected" : ""
+              } p-2 rounded-lg cursor-pointer w-max text-center`}
               onClick={() => setSelectedTab(item)}
             >
               {`${item.label}`}
