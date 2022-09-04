@@ -39,8 +39,29 @@ const InfoCard = () => {
               </span>
               "
             </p>
+
             <p className="flex justify-center items-center gap-2 hover:animate-pulse">
               " What <b>type</b> of news do you have? "
+            </p>
+            <p className="flex justify-center items-center gap-2 hover:animate-pulse">
+              " Open article number
+              <span
+                className="flex gap-1 py-[2px] text-[14px] px-[8px] 
+            rounded-lg bg-blue-500 shadow-md"
+              >
+                <b className="text-slate-200 capitalize"><code>`any number`</code></b>
+              </span>
+              "
+            </p>
+            <p className="flex justify-center items-center gap-2 hover:animate-pulse">
+              " Show me the latest
+              <span
+                className="flex gap-1 py-[2px] text-[14px] px-[8px] 
+            rounded-lg bg-indigo-300 shadow-md"
+              >
+                <b>Tech News</b>-<span className="opacity-50">By Category</span>
+              </span>
+              "
             </p>
             <p className="flex justify-center gap-2 hover:animate-pulse">
               " How's the <b>Weather</b> here "
@@ -59,9 +80,9 @@ const InfoCard = () => {
   ];
   const [selectedTab, setSelectedTab] = React.useState(tabs[0]);
   return (
-    <div className="flex flex-col md:w-[30rem] m-auto gap-8 justify-center w-full h-full">
+    <div className="flex flex-col md:mt-14 md:w-[30rem] m-auto gap-8 justify-center w-full h-full">
       <m.h2 className="w-full text-4xl font-bold leading-none md:text-5xl">
-        Welcome to News.js
+        Welcome to News<b className="text-blue-400">.</b><b className="text-[#ff2602]">js</b>
       </m.h2>
       <div className="flex flex-col gap-4 h-screen">
         <nav className="rounded-lg bg-transparent">

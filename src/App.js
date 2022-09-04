@@ -93,7 +93,7 @@ function App() {
           href="https://github.com/Divuzki/News.js?utm_source=news-js.hop.sh&utm_medium=visit&utm_campaign=hackathon-projects"
           target={"_blank"}
           rel="noreferrer"
-          className="fixed group rounded-xl transition-all py-2 px-4
+          className="fixed group backdrop-blur-lg z-50 rounded-xl transition-all py-2 px-4
          hover:bg-slate-600 flex gap-2 items-center bottom-5 left-4"
         >
           <GithubIcon className="group-hover:fill-white" />
@@ -110,7 +110,7 @@ function App() {
               />
               <div className="flex flex-wrap items-center justify-between mb-8">
                 <h2 className="mr-10 text-4xl font-bold leading-none md:text-5xl">
-                  {head}
+                  {head} <b className="opacity-70 text-gray-300">⟶ say "take me back" to go back</b>
                 </h2>
               </div>
               <div className="flex flex-col flex-wrap">

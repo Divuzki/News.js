@@ -60,6 +60,7 @@ const SingleMessage = ({ message }) => {
 
 export default function Messages() {
   const [chatMessages, setChatMessages] = useState([]);
+  const [showVideo, setShowVideo] = useState(false);
 
   // in this example, USER_MESSAGE is an event that you'd send to the channel from your backend
   useChannelMessage(channelId, "NEW_USER_MESSAGE", (message) => {
@@ -75,21 +76,66 @@ export default function Messages() {
 
   return (
     <>
-      <span className="text-[10px] font-semibold opacity-80 w-full flex mb-4 justify-center text-center">- Note that nothing here is being saved -</span>
-      <div
-      className="flex-1 overflow-y-auto overflow-x-hidden w-full rounded-lg max-w-[30rem] max-h-[30rem] shadow-md scrollbar-thin"
-      style={{ backgroundColor: "#DAD3CC" }}
-    > 
       {!chatMessages.length && (
-        <h3 className="text-center text-2xl font-bold py-2 px-4">
-          No messages yet, be the first to ask
-        </h3>
+        <div className="overflow-hidden capitalize flex justify-center gap-2 text-[15px]">
+          <span>don't understand, see the demostration </span>
+
+          <button
+            className="select-none text-indigo-400"
+            onClick={() => setShowVideo(true)}
+          >
+            here
+          </button>
+          {showVideo && (
+            <m.div
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 50 }}
+            >
+              <div className="fixed w-screen h-screen left-0 top-0 flex justify-center items-center z-50">
+                <div
+                  onClick={() => setShowVideo(false)}
+                  className="text-white w-max z-50 h-max rounded-lg cursor-pointer absolute md:top-4 bottom-10 left-5 underline p-2 bg-red-400"
+                >
+                  EXIT
+                </div>
+                <iframe
+                  src="https://www.veed.io/embed/c5190597-a69a-4317-8685-ee0298944826"
+                  width="744"
+                  height="504"
+                  frameborder="0"
+                  title="video-demostration-of-realtime features"
+                  className="z-50 rounded-lg"
+                  webkitallowfullscreen
+                  mozallowfullscreen
+                  allowFullScreen
+                ></iframe>
+                <div
+                  onClick={() => setShowVideo(false)}
+                  className="absolute max-w-screen w-full h-full max-h-screen bg-black opacity-50 cursor-pointer
+               left-0 bottom-0 right-0 top-0"
+                ></div>
+              </div>
+            </m.div>
+          )}
+        </div>
       )}
-      {chatMessages.map((message, index) => (
-        <SingleMessage key={index} message={message} />
-      ))}
-    </div>
+      <span className="text-[10px] font-semibold opacity-80 w-full flex mb-4 justify-center text-center">
+        - Note that nothing here is being saved -
+      </span>
+      <div
+        className="flex-1 overflow-y-auto overflow-x-hidden w-full rounded-lg max-w-[30rem] max-h-[30rem] shadow-md scrollbar-thin"
+        style={{ backgroundColor: "#DAD3CC" }}
+      >
+        {!chatMessages.length && (
+          <h3 className="text-center text-2xl font-bold py-2 px-4">
+            No messages yet, be the first to ask
+          </h3>
+        )}
+        {chatMessages.map((message, index) => (
+          <SingleMessage key={index} message={message} />
+        ))}
+      </div>
     </>
-    
   );
 }

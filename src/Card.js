@@ -1,7 +1,7 @@
 import React from "react";
 import { m } from "framer-motion";
 
-const Card = ({ post, i, activeArticle, isShow }) => {
+const Card = ({ post, i, isShow }) => {
   const ref = React.useRef(null);
 
   React.useEffect(() => {
@@ -32,7 +32,7 @@ const Card = ({ post, i, activeArticle, isShow }) => {
         ></m.div>
         <m.div
           className={`flex flex-col justify-between px-4 py-6 bg-white border  ${
-            isShow ? "border-4 border-gray-400" : "border-gray-400"
+            isShow ? "border-2 border-gray-400" : "border-gray-400"
           }`}
         >
           <m.div className="flex flex-col">
