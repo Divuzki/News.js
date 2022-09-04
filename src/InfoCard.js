@@ -21,7 +21,7 @@ const InfoCard = () => {
               className="flex gap-1 py-[2px] px-[8px] 
             rounded-lg bg-blue-300 shadow-md"
             >
-              <b>Fox News</b>-<span className="opacity-50">By Publisters</span>
+              <b>Fox News</b>-<span className="opacity-50">By Sources</span>
             </div>
             "
           </p>
@@ -56,7 +56,7 @@ const InfoCard = () => {
               onClick={() => setSelectedTab(item)}
             >
               {`${item.label}`}
-              {item === selectedTab ? (
+              {item.id === selectedTab.id ? (
                 <m.div className="underline" layoutId="underline" />
               ) : null}
             </li>
