@@ -1,10 +1,12 @@
 import React from "react";
-import { m } from "framer-m";
+import { m } from "framer-motion";
 
-
-const Card = ({ post, i }) => {
+const Card = ({ post, i, isShow }) => {
   return (
-    <m.div layoutId={i} className="w-full max-w-full mb-8 sm:w-1/2 px-4 lg:w-1/3 flex flex-col group">
+    <m.div
+      layoutId={i}
+      className="w-full max-w-full mb-8 sm:w-1/2 px-4 lg:w-1/3 flex flex-col group"
+    >
       <m.img
         src={post.urlToImage}
         alt="Card img"
@@ -12,11 +14,14 @@ const Card = ({ post, i }) => {
       />
       <m.div className="flex transition-all flex-grow">
         <m.div className="triangle transition-all group-hover:-translate-y-2 z-[-1]"></m.div>
-        <m.div className="flex flex-col justify-between px-4 py-6 bg-white border border-gray-400">
-          <m.div>
+        <m.div className={`flex flex-col justify-between px-4 py-6 bg-white border  ${isShow ? "border-4 border-gray-400": "border-gray-400"}`}>
+          <m.div className="flex flex-col">
+            <m.span className="text-sm w-max font-medium text-gray-500 opacity-70">
+              {(new Date(post.publishedAt)).toDateString()}
+            </m.span>
             <m.a
               href={post.url}
-              className="inline-block transition-all mb-4 text-xs font-bold capitalize border-b-2 border-blue-600 hover:text-blue-600"
+              className="inline-block transition-all mb-4 w-max text-xs font-bold capitalize border-b-2 border-blue-600 hover:text-blue-600"
             >
               {post.author}
             </m.a>
@@ -33,7 +38,8 @@ const Card = ({ post, i }) => {
               href={post.url}
               className="inline-block pb-1 mt-2 text-base font-black text-blue-600 uppercase border-b border-transparent hover:border-blue-600"
             >
-              Read More <b>⟶</b>
+              Read More{" "}
+              <b className="transition-all group-hover:text-blue-400">⟶</b>
             </a>
           </m.div>
         </m.div>
