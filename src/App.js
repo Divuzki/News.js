@@ -1,6 +1,6 @@
 import alanBtn from "@alan-ai/alan-sdk-web";
 import wordsToNumbers from "words-to-numbers";
-import React, { useEffect } from "react";
+import React from "react";
 import Card from "./Card";
 import {
   m,
