@@ -1,35 +1,68 @@
-# News.js AI Controlled Website
+# News.js
 
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/Divuzki/news-js/blob/main/LICENSE)
+
+#### Try News.Js Now [Click here](https://news-js.pages.dev)
 
 ## About News.js
-> - News.js is an ai controlled website for news and conversation
-> ## Featues
-> - News.js has `realtime communication` with the help of [hop.io](https://www.hop.io), you can see what other people are asking the ai live but its not stored on the database, you can [see it in the short video i made](https://www.veed.io/view/c5190597-a69a-4317-8685-ee0298944826?sharingWidget=true) demostrating how to use it.
 
-> - News.js can also answer questions related to `weather`, `news`,`bitcoin`. News.js uses News Api to get your news questions
+News.js is an AI-controlled website for news and conversation. It leverages artificial intelligence to provide answers to questions related to weather, news, and Bitcoin. With News.js, you can stay updated on the latest news and engage in interactive conversations with the AI.
+
+## Features
+
+- **Real-time Communication** (Currently Unavailable): News.js previously integrated with [hop.io](https://www.hop.io) to enable real-time communication. You can check out the [short video demonstration](https://www.veed.io/view/c5190597-a69a-4317-8685-ee0298944826?sharingWidget=true) showcasing the previous Real-time Communication feature.
+
+- **News, Weather, and Bitcoin Queries**: News.js utilizes the News API to answer questions related to news, weather, and Bitcoin. Stay informed about the latest headlines, get weather updates, and explore Bitcoin-related information effortlessly.
 
 ## Tech Stack
-- ReactJs
-- alan-ai
-- tailwindcss
-- framer-motion
 
-## Available Scripts
+- ReactJS
+- Alan AI
+- Tailwind CSS
+- Framer Motion
 
-In the project directory, you can run:
+## Installation
 
-### `npm start`
+To run News.js, follow these steps:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+1. Clone the repository:
+   ```
+   git clone https://github.com/Divuzki/news-js.git
+   ```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2. Navigate to the project directory:
+   ```
+   cd news-js
+   ```
 
-### `npm run build`
+3. Install dependencies:
+   ```
+   npm install
+   ```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+4. Start the development server:
+   ```
+   npm start
+   ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+5. Open your browser and visit `http://localhost:3000` to access News.js.
+
+## Contributing
+
+Contributions to News.js are welcome. If you would like to contribute.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](https://github.com/Divuzki/news-js/blob/main/LICENSE) file for details.
+
+## Author
+
+- Divine Ikhuoria - [GitHub](https://github.com/Divuzki)
+
+## Contact
+
+For any inquiries, questions, or collaboration opportunities, please contact Divine Ikhuoria at divuzki@gmail.com.
+
+---
+
+Thank you for your interest in News.js. Stay up-to-date with the latest news and explore insightful conversations with our AI-powered platform. Please note that the real-time communication feature is currently unavailable. You can check out the [short video demonstration](https://www.veed.io/view/c5190597-a69a-4317-8685-ee0298944826?sharingWidget=true) showcasing the previous Real-time Communication feature. Happy browsing and conversing!
